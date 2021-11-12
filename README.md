@@ -8,7 +8,7 @@ When done, push your codes to a Github repository and send us the link. Pull and
 
 **Solution:**
 
-Develop an Deploy an application using Laravel, Quasar, Nginx, Certbot, DigitalOcean (Backend) and Vercel (Frontend).
+Develop and deploy an application using Laravel, Quasar, Nginx, Certbot, DigitalOcean (Backend) and Vercel (Frontend).
 
 Please see the official link of my solution.
 https://appetiser-apps-test.vercel.app/
