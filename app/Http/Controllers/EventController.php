@@ -17,6 +17,9 @@ use Illuminate\Pipeline\Pipeline;
 class EventController extends Controller
 {
     /**
+     * Return all events with dynamic filtering
+     * via parameter and query strings.
+     *
      * @return AnonymousResourceCollection
      */
     public function index(): ?AnonymousResourceCollection
@@ -35,6 +38,7 @@ class EventController extends Controller
     }
 
     /**
+     * Show a specific event
      * @param Event $event
      * @return EventResource
      */
@@ -44,6 +48,7 @@ class EventController extends Controller
     }
 
     /**
+     * Create an event.
      * @param EventStoreRequest $request
      * @return EventResource
      */
@@ -54,6 +59,7 @@ class EventController extends Controller
     }
 
     /**
+     * Update a specific event.
      * @param EventUpdateRequest $request
      * @param Event $event
      * @return EventResource
