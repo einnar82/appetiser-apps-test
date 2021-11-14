@@ -16,15 +16,27 @@ class EventTest extends TestCase
 
     public function testIfCanReturnAllEvents()
     {
-        Event::factory(5)->create();
+        $event = Event::factory(5)->create();
 
         $response = $this->getJson('api/events');
 
         $response
             ->assertOk()
             ->assertJsonStructure([
-                'data',
+                'data' => [
+                    '*' => [
+                        'id',
+                        'title',
+                        'from',
+                        'to',
+                        'days',
+                        'created_at',
+                        'updated_at'
+                    ]
+                ]
             ]);
+
+        $this->assertCount(5, $event->all());
     }
 
     public function testIfCanReturnAnEvent()
