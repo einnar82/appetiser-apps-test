@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use App\Models\Event;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Http\Response;
 use Tests\TestCase;
 
 /**
@@ -48,14 +49,31 @@ class EventTest extends TestCase
         $response
             ->assertOk()
             ->assertJsonStructure([
-                'data',
+                'data' => [
+                    'id',
+                    'title',
+                    'from',
+                    'to',
+                    'days',
+                    'created_at',
+                    'updated_at'
+                ]
             ]);
+        $this->assertCount(1, $event->all());
     }
 
     public function testIfCanValidateAddEvents()
     {
         $response = $this->postJson('api/events');
-        $response->assertStatus(422);
+        $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY)
+            ->assertJsonStructure([
+                'message',
+                'errors' => [
+                    'title',
+                    'from',
+                    'to'
+                ]
+            ]);
     }
 
 
@@ -76,7 +94,17 @@ class EventTest extends TestCase
             ->where('from', $from)
             ->where('to', $to)
             ->get();
-        $response->assertStatus(201);
+        $response->assertStatus(Response::HTTP_CREATED)
+            ->assertJsonStructure([
+                'data' => [
+                    'id',
+                    'title',
+                    'from',
+                    'to',
+                    'created_at',
+                    'updated_at'
+                ]
+            ]);
         $this->assertCount(1, $events);
     }
 
