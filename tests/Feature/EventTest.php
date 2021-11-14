@@ -143,7 +143,17 @@ class EventTest extends TestCase
             ->where('to', $to)
             ->get();
 
-        $response->assertStatus(200);
+        $response->assertOk()
+            ->assertJsonStructure([
+                'data' => [
+                    'id',
+                    'title',
+                    'from',
+                    'to',
+                    'created_at',
+                    'updated_at'
+                ]
+            ]);
         $this->assertCount(1, $events);
     }
 }
