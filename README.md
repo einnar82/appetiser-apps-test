@@ -12,3 +12,13 @@ Develop and deploy an application using Laravel, Quasar, Nginx, Certbot, Digital
 
 Please see the official link of my solution.
 https://appetiser-apps-test.vercel.app/
+
+
+**Installation:**
+
+1. Type ```composer install``
+2. ```cp .env.example .env```
+3. ```php artisan migrate```
+4. To setup the frontend, please go to the `frontend` folder then type, ```npm install```.
+5. After the ```npm install```, you may serve the project by typing ```npm start```
+6. To run PHP Unit Test, type ```php artisan test``` or ```vendor/bin/phpunit```
