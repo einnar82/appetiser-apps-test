@@ -14,7 +14,7 @@ class EventTest extends TestCase
 {
     use RefreshDatabase, WithFaker;
 
-    public function test_if_can_return_all_events()
+    public function testIfCanReturnAllEvents()
     {
         Event::factory(5)->create();
 
@@ -27,7 +27,7 @@ class EventTest extends TestCase
             ]);
     }
 
-    public function test_if_can_return_an_event()
+    public function testIfCanReturnAnEvent()
     {
         $event = Event::factory()->create();
 
@@ -40,14 +40,14 @@ class EventTest extends TestCase
             ]);
     }
 
-    public function test_if_can_validate_add_events()
+    public function testIfCanValidateAddEvents()
     {
         $response = $this->postJson('api/events');
         $response->assertStatus(422);
     }
 
 
-    public function test_if_can_create_an_event()
+    public function testIfCanCreateAnEvent()
     {
         $title = $this->faker->sentence(4);
         $from = $this->faker->date();
@@ -70,14 +70,14 @@ class EventTest extends TestCase
 
 
 
-    public function test_if_can_validate_update_event()
+    public function testIfCanValidateUpdateEvent()
     {
         $response = $this->putJson('/api/events');
         $response->assertStatus(405);
     }
 
 
-    public function test_if_can_update_an_event()
+    public function testIfCanUpdateAnEvent()
     {
         $event = Event::factory()->create();
         $title = $this->faker->sentence(4);
