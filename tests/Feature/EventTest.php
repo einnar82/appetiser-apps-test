@@ -110,10 +110,17 @@ class EventTest extends TestCase
 
 
 
-    public function testIfCanValidateUpdateEvent()
+    public function testIfReturnMethodNotAllowedException()
     {
         $response = $this->putJson('/api/events');
-        $response->assertStatus(405);
+        $response->assertStatus(Response::HTTP_METHOD_NOT_ALLOWED)
+            ->assertJsonStructure([
+                'message',
+                'exception',
+                'file',
+                'line',
+                'trace'
+            ]);
     }
 
 
