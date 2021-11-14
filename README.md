@@ -16,7 +16,7 @@ https://appetiser-apps-test.vercel.app/
 
 **Installation:**
 
-1. Type ```composer install``
+1. Type ```composer install```
 2. ```cp .env.example .env```
 3. ```php artisan migrate```
 4. To setup the frontend, please go to the `frontend` folder then type, ```npm install```.
