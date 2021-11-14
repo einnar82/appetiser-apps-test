@@ -6,6 +6,7 @@ use App\Http\Requests\EventStoreRequest;
 use App\Http\Requests\EventUpdateRequest;
 use App\Http\Resources\API\EventResource;
 use App\Models\Event;
+use App\Queries\Event\FilterByDays;
 use App\Queries\Event\FilterByFrom;
 use App\Queries\Event\FilterByName;
 use App\Queries\Event\FilterByTo;
@@ -25,7 +26,8 @@ class EventController extends Controller
             ->through([
                 FilterByName::class,
                 FilterByFrom::class,
-                FilterByTo::class
+                FilterByTo::class,
+                FilterByDays::class
             ])
             ->thenReturn()
             ->simplePaginate();
